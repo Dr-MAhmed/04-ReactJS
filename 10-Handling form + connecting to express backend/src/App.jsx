@@ -29,15 +29,15 @@ function App() {
     });
     let res = await fet.text();
     console.log(data, res);
-    
+
     // Custom Errors
-    if (data.username !== "harry") {
-      setError("harry", {
+    if (data.username === "harry") {
+      setError("person", {
         message: "This user has been blocked from accessing the website",
       });
     }
-    if (data.password !== "harry") {
-      setError("codeWithHarry", {
+    if (data.password === "harry") {
+      setError("blocked", {
         message: "Password should be harry",
       });
     }
@@ -91,9 +91,9 @@ function App() {
           {errors.password && (
             <div className="purple">{errors.password.message}</div>
           )}
-          {errors.harry && <div className="purple">{errors.harry.message}</div>}
-          {errors.codeWithHarry && (
-            <div className="purple">{errors.codeWithHarry.message}</div>
+          {errors.person && <div className="purple">{errors.person.message}</div>}
+          {errors.blocked && (
+            <div className="purple">{errors.blocked.message}</div>
           )}
           <br />
           <input disabled={isSubmitting} type="submit" />
